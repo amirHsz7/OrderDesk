@@ -2,13 +2,12 @@
   <div class="panel">
     <!-- panel header -->
     <PanelHeader />
-
     <!-- panel sidebar -->
     <!-- <PanelSideBar /> -->
 
     <!-- panel page -->
     <main class="panel-page container">
-      <slot />
+      <router-view />
     </main>
   </div>
 </template>

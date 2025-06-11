@@ -41,7 +41,7 @@ module.exports = {
 			'primary-text': '#637381',
 			'secondary-text': '#8899A8',
 			'stroke': '#DFE4EA',
-			'main-blue': '#2660a2',
+			'main-blue': '#1b4473',
 			//dark
 			'dark': '#050505',
 			'dark-200': '#707070',

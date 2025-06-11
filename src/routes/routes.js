@@ -1,12 +1,17 @@
 // layouts
 import DefaultLayout from '../../layouts/Default.vue';
+
+
 export default [
-    {
-        path: '/',
+  {
+    path: '/',
+    component: DefaultLayout,
+    children: [
+      {
+        path: '/dashboard',
         name: 'dashboard',
-        component: () => import('../pages/Dashboard'),
-        meta: {
-            layout: DefaultLayout
-        },
-    },
+        component: () => import('../pages/Dashboard')
+      }
+    ]
+  },
 ]
