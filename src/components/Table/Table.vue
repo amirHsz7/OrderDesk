@@ -1,40 +1,46 @@
 <template>
-<div class="overflow-auto">
-
-  <table class="w-full" border="1" cellspacing="0" cellpadding="8">
-    <thead>
-      <tr class="p-1">
-        <th
-            v-for="(header, index) in headers"
-            :key="index"
-            @click="sortBy(index)"
-            class="cursor-pointer text-xs text-nowrap hover:bg-stroke rounded transition select-none border-b border-gray-300 text-start"
+  <!-- برای scroll خوردن خود table -->
+  <div class="overflow-auto w-full">
+    <table class="w-full" border="1" cellspacing="0" cellpadding="8">
+      <thead>
+        <!-- component draggable -->
+        <draggable
+          v-model="localHeaders"
+          tag="tr"
+          :options="{ animation: 150, handle: '.drag-handle' }"
         >
-          {{ header }}
-          <span v-if="sortColumn === index">
-            <i :class="sortDirection === 'desc' ? 'rotate-180' : ''" class="fas fa-arrow-up transition text-xs"></i>
-          </span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <TableRow
-        v-for="(row, index) in sortedRows"
-        :key="index"
-        :rowData="row"
-      />
-    </tbody>
-  </table>
-</div>
+          <th
+            v-for="(header, index) in localHeaders"
+            :key="header.id"
+            @click="sortBy(index)"
+            class="cursor-pointer drag-handle text-xs text-nowrap hover:bg-stroke rounded transition select-none border-b border-gray-300 text-start"
+          >
+            {{ header.label }}
+            <span v-if="sortColumn === index">
+              <i :class="sortDirection === 'desc' ? 'rotate-180' : ''" class="fas fa-arrow-up transition text-xs"></i>
+            </span>
+          </th>
+        </draggable>
+      </thead>
+      <tbody>
+        <TableRow
+          v-for="(row, rowIndex) in sortedRows"
+          :key="rowIndex"
+          :rowData="mapRowToHeader(row)"
+        />
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
 import TableRow from '../TableRow/TableRow.vue'
-
+import draggable from 'vuedraggable'
 export default {
   name: 'TableComponent',
   components: {
-    TableRow
+    TableRow,
+    draggable
   },
   props: {
     headers: {
@@ -48,11 +54,13 @@ export default {
   },
   data() {
     return {
+      localHeaders: this.headers.map((h, i) => ({ id: i, label: h })), // برای index دادن به هر ستون header
       sortColumn: null,
       sortDirection: 'asc'
     }
   },
   computed: {
+    // sort method for sorting row asc or desc
     sortedRows() {
       if (this.sortColumn === null) return this.rows
       return [...this.rows].sort((a, b) => {
@@ -74,7 +82,11 @@ export default {
         this.sortColumn = index
         this.sortDirection = 'asc'
       }
-    }
+    },
+    // تبدیل کردن rows بر اساس header جدید
+    mapRowToHeader(row) {
+      return this.localHeaders.map(h => row[h.id])
+    },
   }
 }
 </script>
@@ -83,4 +95,5 @@ export default {
 th{
     @apply text-primary-text text-lg-r
 }
+
 </style>

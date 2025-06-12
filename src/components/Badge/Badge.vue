@@ -13,7 +13,7 @@ export default {
       default: 'finalized',
       validator(value) {
         return [
-          "finalized","Waiting","failed"
+          "finalized","waiting","failed" // we can add more but u must added it to tailwind and style on the bottom
         ].includes(value);
       },
     },

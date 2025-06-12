@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import PanelHeader from '../src/components/Layouts/PanelHeader.vue'
+import PanelHeader from '@/components/Layouts/PanelHeader.vue'
 import PanelSidebar from '@/components/Layouts/PanelSidebar.vue';
 
 export default {

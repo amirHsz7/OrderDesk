@@ -8,7 +8,7 @@
     </template>
 
     <!-- modal body -->
-    <text-input v-model="filterValue" class="py-6" placeholder="Search whatever you want..." size="md">
+    <text-input autoFocus v-model="filterValue" class="py-6" placeholder="Search whatever you want..." size="md">
         <template #icon>
             <i class="fas fa-search"></i>
         </template>
@@ -71,7 +71,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

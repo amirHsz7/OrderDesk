@@ -6,6 +6,7 @@
     </div>
     <!-- action bar -->
     <div class="flex w-full md:w-fit justify-between md:justify-normal items-center gap-4">
+        <!-- search input -->
         <TextInput v-model="searchId" placeholder="Order ID" size="sm">
             <template #icon>
                 <i class="fas fa-search"></i>
@@ -42,11 +43,5 @@ export default {
         
         }
     },
-
-    methods: {
-        onInputChange(event) {
-        this.$store.dispatch('updateSearchId', event.target.value);
-        }
-    }
 }
 </script>

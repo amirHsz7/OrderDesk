@@ -49,19 +49,18 @@ export default {
   },
   computed: {
     searchId() {
-      return this.$store.getters.getSearchId;
+      return this.$store.getters.getSearchId; // get search id from store
     },
 
     filteredRows() {
       let filteredData = null
+      // اعمال تغییرات searchid
       if (!this.searchId) filteredData = this.rows;
       else filteredData = this.rows.filter(item => item[0].toString().includes(this.searchId));
-
+      // اعمال تغییرات filter modal
       if (this.filterValue){
         let filterval = this.filterValue.toString().toLowerCase()
         filteredData = filteredData.filter(innerArr => innerArr.some(item => item.toString().toLowerCase().includes(filterval)));
-        console.log(filteredData);
-        
       }
   
       return filteredData
@@ -88,11 +87,6 @@ export default {
     closeModal () {
       this.showModal = false
     },
-    // submitFilter () {
-    //   return this.filteredRows.filter(item => {
-    //     item.includes(this.filterValue)
-    //   })
-    // }
   },
 
   mounted () {

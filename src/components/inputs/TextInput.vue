@@ -205,12 +205,6 @@ export default {
   &.md {
     .input-box {
       @apply h-12 px-4;
-
-      .uicon {
-        min-width: 20px !important;
-        height: 20px !important;
-        @apply fill-secondary-text;
-      }
     }
 
     &:is(.has-unit) {
@@ -227,12 +221,6 @@ export default {
   &.sm {
     .input-box {
       @apply h-8 px-4;
-
-      .uicon {
-        min-width: 16px !important;
-        height: 16px !important;
-        @apply fill-secondary-text;
-      }
     }
 
     &:is(.has-unit) {
@@ -249,12 +237,6 @@ export default {
   &.lg {
     .input-box {
       @apply h-14 px-4;
-
-      .uicon {
-        min-width: 24px !important;
-        height: 24px !important;
-        @apply fill-secondary-text;
-      }
     }
 
     &:is(.has-unit) {

@@ -32,7 +32,7 @@ export default {
     },
     url: {
       type: String,
-      default: '/'
+      default: '#'
     },
     selected: {
       type: Boolean,

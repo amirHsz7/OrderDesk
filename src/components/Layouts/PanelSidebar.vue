@@ -1,19 +1,14 @@
 <template>
   <div :class="classes">
-    <!-- flex flex-col gap-2 -->
+    <!-- toggle button to open and close sidebar -->
     <div  @click="toggleSidebar" :class="{closed : close}" class="toggle-btn">
         <i :class="close ? 'rotate-180' : ''" class="fas fa-angle-left transition duration-500"></i>
     </div>
+    <!-- static buttons -->
     <SidebarLink :minimal="close" text="Dashboard">
         <template #before>
             <i class="fas fa-home"></i>
         </template>
-
-        <!-- <template #after>
-            <div @click="toggleSidebar" class="toggle-btn">
-                <i :class=" close ? 'rotate-180' : ''" class="fas fa-angle-left transition"></i>
-            </div>
-        </template> -->
     </SidebarLink>
 
     <SidebarLink :minimal="close" text="Folders" selected nested>
@@ -110,6 +105,7 @@ export default {
         }
     },
     mounted () {
+        // handle close side bar when resize the screen
         window.addEventListener('resize', this.handleResize)
         this.handleResize()
         let size = window.matchMedia('(min-width: 768px)').matches

@@ -6,6 +6,7 @@ export default [
   {
     path: '/',
     component: DefaultLayout,
+    redirect: '/dashboard',
     children: [
       {
         path: '/dashboard',
@@ -14,4 +15,8 @@ export default [
       }
     ]
   },
+  {
+    path: '*',          // هر آدرسی که تعریف نشده باشه
+    redirect: '/dashboard'  // هدایت به /dashboard
+  }
 ]

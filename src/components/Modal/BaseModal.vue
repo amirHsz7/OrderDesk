@@ -52,23 +52,9 @@ export default {
   watch: {
     show(val) {
       PageScroll(!val)
-      if (val) {
-        // this.moveToBody()
-      }
-    }
-  },
-  mounted() {
-    if (this.show) {
-    //   this.moveToBody()
     }
   },
   methods: {
-    // moveToBody() {
-    //   const modal = this.$refs.modal
-    //   if (modal && modal.parentNode !== document.body) {
-    //     document.body.appendChild(modal)
-    //   }
-    // },
     close() {
       if (this.closable) {
         this.$emit('close')
