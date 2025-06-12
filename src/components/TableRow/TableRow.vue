@@ -1,6 +1,6 @@
 <template>
   <tr class="border-b-2 border-gray-300"> 
-    <td class="text-start" v-for="(value, index) in rowData" :key="index">
+    <td class="text-start " v-for="(value, index) in rowData" :key="index">
         
         <div class="flex items-center gap-2" v-if="rowData?.length -1 == index && value" >
             <div v-for="(item , index2) in value" :key="index2">

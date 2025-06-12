@@ -25,7 +25,7 @@
 import PageScroll from '@/composables/PageScroll'
 
 export default {
-  name: 'ModalComponent',
+  name: 'BaseModal',
   props: {
     show: {
       type: Boolean,
@@ -37,7 +37,7 @@ export default {
     },
     minHeight: {
       type: String,
-      default: '0px'
+      default: '352px'
     },
     closable: {
       type: Boolean,
@@ -98,9 +98,9 @@ export default {
 // transitions
 .modal-slide-down-enter-active,
 .modal-slide-down-leave-active {
-  transition: 0.1s;
+  transition: 0.4s;
   .modal-frame {
-    transition: 0.1s;
+    transition: 0.4s;
   }
 }
 

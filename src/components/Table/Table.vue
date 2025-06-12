@@ -1,4 +1,6 @@
 <template>
+<div class="overflow-auto">
+
   <table class="w-full" border="1" cellspacing="0" cellpadding="8">
     <thead>
       <tr class="p-1">
@@ -6,7 +8,7 @@
             v-for="(header, index) in headers"
             :key="index"
             @click="sortBy(index)"
-            class="cursor-pointer hover:bg-stroke rounded transition select-none border-b border-gray-300 text-start"
+            class="cursor-pointer text-xs text-nowrap hover:bg-stroke rounded transition select-none border-b border-gray-300 text-start"
         >
           {{ header }}
           <span v-if="sortColumn === index">
@@ -23,6 +25,7 @@
       />
     </tbody>
   </table>
+</div>
 </template>
 
 <script>

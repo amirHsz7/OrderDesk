@@ -100,14 +100,30 @@ export default {
         toggleSidebar () {
             this.close =! this.close
             
+        },
+        handleResize () {
+            const isDesktop = window.matchMedia('(min-width: 768px)').matches
+            if (isDesktop) {
+                this.close = false
+            }
+            else this.close = true
         }
+    },
+    mounted () {
+        window.addEventListener('resize', this.handleResize)
+        this.handleResize()
+        let size = window.matchMedia('(min-width: 768px)').matches
+        if(size) this.close = false
+    },
+    beforeMount() {
+        window.removeEventListener('resize', this.handleResize)
     }
 }
 </script>
 
 <style lang="scss" scoped>
 .sidebar{
-    @apply relative flex flex-col gap-2 w-[190px] transition-all duration-200 ;
+    @apply relative flex flex-col gap-2 w-[190px] min-h-screen h-full transition-all duration-200 ;
 
     &.closed{
         @apply w-6 

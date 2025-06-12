@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-main-blue text-white w-full px-6 py-2 flex items-center justify-between">
+  <div class="bg-main-blue text-white w-full px-6 py-2 flex flex-col gap-4 md:flex-row items-center justify-between">
     <!-- logo place -->
     <div class="heading-6">
         OrderDesk
     </div>
     <!-- action bar -->
-    <div class="flex items-center gap-4">
+    <div class="flex w-full md:w-fit justify-between md:justify-normal items-center gap-4">
         <TextInput v-model="searchId" placeholder="Order ID" size="sm">
             <template #icon>
                 <i class="fas fa-search"></i>

@@ -1,51 +1,70 @@
 <template>
-<div>
+  <div class="p-4 flex w-full flex-col gap-6">
+    <div class=" text-6xl font-bold py-4 w-full border-b border-stroke">All Orders</div>
+    <FilterModal :show="showModal" @close="closeModal" @submit="(i) => filterValue = i" />
+    <div class="flex items-center gap-4">
+      <!-- filter btn -->
+      <Button @click="openModal" color="gray">
+        filter
+        <template #before>
+          <i class="fas fa-sliders"></i>
+        </template>
+      </Button>
+      <!-- badge -->
+      <Badge size="lg" v-if="filterValue" color="finalized">
+        <div class="flex items-center gap-2 text-primary-text">
+          <div>{{filterValue.toString().toLowerCase()}}</div>
 
-    <Modal :show="showModal" @close="closeModal">
-      asdasd
-    </Modal>
-    <!-- filter btn -->
-    <Button @click="openModal" color="gray">
-      filter
-      <template #before>
-        <i class="fas fa-sliders"></i>
-      </template>
-    </Button>
+          <li class="fas fa-xmark cursor-pointer" @click="() => filterValue = null"></li>
+        </div>
+      </Badge>
+    </div>
 
-    <!-- table -->
-    <Table :headers="['Order id', 'First name', 'Last name' , 'Country', 'Qty' , 'Total' , 'Order date' , 'Tags']" :rows="filteredRows" />
-</div>
+      <!-- table -->
+      <Table :headers="['Order id', 'First name', 'Last name' , 'Country', 'Qty' , 'Total' , 'Order date' , 'Tags']" :rows="filteredRows" />
+  </div>
 </template>
 
 <script>
 import {getRequest , parseApiResponse} from "@/composables/ApiRequests"
 import Table from "@/components/Table/Table.vue"
 import Button from '@/components/Buttons/Button.vue'
-import Modal from '@/components/Modal/Modal.vue'
+import FilterModal from '@/components/Modal/FilterModal.vue'
+import Badge from '@/components/Badge/Badge.vue'
 export default {
   name: 'DashboardPage',
   layouts: 'DefaultLayout',
   components:{
     Table,
     Button,
-    Modal
+    FilterModal,
+    Badge
   },
    data() {
     return {
       rows : [],
-      showModal : false
+      showModal : false,
+      filterValue : null,
     }
   },
   computed: {
     searchId() {
       return this.$store.getters.getSearchId;
     },
-    filteredRows() {
-      if (!this.searchId) return this.rows;
 
-      return this.rows.filter(item =>
-        item[0].toString().includes(this.searchId)
-      );
+    filteredRows() {
+      let filteredData = null
+      if (!this.searchId) filteredData = this.rows;
+      else filteredData = this.rows.filter(item => item[0].toString().includes(this.searchId));
+
+      if (this.filterValue){
+        let filterval = this.filterValue.toString().toLowerCase()
+        filteredData = filteredData.filter(innerArr => innerArr.some(item => item.toString().toLowerCase().includes(filterval)));
+        console.log(filteredData);
+        
+      }
+  
+      return filteredData
     }
   },
   methods: {
@@ -68,7 +87,12 @@ export default {
     },
     closeModal () {
       this.showModal = false
-    }
+    },
+    // submitFilter () {
+    //   return this.filteredRows.filter(item => {
+    //     item.includes(this.filterValue)
+    //   })
+    // }
   },
 
   mounted () {
