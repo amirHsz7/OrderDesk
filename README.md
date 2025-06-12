@@ -19,6 +19,7 @@
 
 پیش‌ نیازها
 
+
 Node.js نسخه ۱۲ به بالا
 
 npm یا yarn
@@ -32,6 +33,8 @@ cd order-desk
 npm install
 
 npm run serve
+
+
 ساختار پروژه
 
 src/components: ...کامپوننت‌های قابل استفاده مجدد مثل جدول، ردیف جدول، دکمه و
