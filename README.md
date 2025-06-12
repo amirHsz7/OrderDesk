@@ -16,17 +16,21 @@
 استفاده از TailwindCSS و FontAwesome برای استایل و آیکون‌ها
 
 نصب و راه‌اندازی
+
 پیش‌ نیازها
+
 Node.js نسخه ۱۲ به بالا
 
 npm یا yarn
 
 مراحل نصب و اجرا
+
 git clone https://github.com/amirHsz7/OrderDesk.git
 cd order-desk
 npm install
 npm run serve
 ساختار پروژه
+
 src/components: ...کامپوننت‌های قابل استفاده مجدد مثل جدول، ردیف جدول، دکمه و
 
 src/pages: صفحات اصلی مانند داشبورد
