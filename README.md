@@ -17,7 +17,7 @@ Order Desk
 استفاده از TailwindCSS و FontAwesome برای استایل و آیکون‌ها
 
 نصب و راه‌اندازی
-پیش‌نیازها
+پیش‌ نیازها
 Node.js نسخه ۱۲ به بالا
 
 npm یا yarn
