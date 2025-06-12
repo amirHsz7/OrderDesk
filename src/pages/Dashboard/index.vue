@@ -1,7 +1,11 @@
 <template>
 <div>
+
+    <Modal :show="showModal" @close="closeModal">
+      asdasd
+    </Modal>
     <!-- filter btn -->
-    <Button color="gray">
+    <Button @click="openModal" color="gray">
       filter
       <template #before>
         <i class="fas fa-sliders"></i>
@@ -17,16 +21,19 @@
 import {getRequest , parseApiResponse} from "@/composables/ApiRequests"
 import Table from "@/components/Table/Table.vue"
 import Button from '@/components/Buttons/Button.vue'
+import Modal from '@/components/Modal/Modal.vue'
 export default {
   name: 'DashboardPage',
   layouts: 'DefaultLayout',
   components:{
     Table,
-    Button
+    Button,
+    Modal
   },
-  data() {
+   data() {
     return {
-      rows : []
+      rows : [],
+      showModal : false
     }
   },
   computed: {
@@ -42,7 +49,7 @@ export default {
     }
   },
   methods: {
-    getData(){
+    getData () {
       getRequest('https://dummyjson.com/c/1924-5416-40b1-a846')
         .then((response) => {
           const {data} = parseApiResponse(response)
@@ -55,7 +62,13 @@ export default {
         .catch((error) => {
             console.log(error);
         })
-      }
+      },
+    openModal () {
+      this.showModal = true
+    },
+    closeModal () {
+      this.showModal = false
+    }
   },
 
   mounted () {

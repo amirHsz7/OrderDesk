@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './routes'
 import axios from 'axios'
 import store from './store';
-import './assets/sass/tailwind.css'
+import './assets/sass/tailwind.scss'
 
 import '@fortawesome/fontawesome-free/css/all.css'
 
