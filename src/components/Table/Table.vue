@@ -61,7 +61,7 @@ export default {
         const result = valA > valB ? 1 : -1
         return this.sortDirection === 'asc' ? result : -result
       })
-    }
+    },
   },
   methods: {
     sortBy(index) {

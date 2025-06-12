@@ -66,8 +66,6 @@
             <i class="fas fa-cog"></i>
         </template>
     </SidebarLink>
-
-    {{close}}
   </div>
 </template>
 

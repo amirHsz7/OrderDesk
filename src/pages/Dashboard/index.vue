@@ -1,5 +1,7 @@
 <template>
-    <Table :headers="['Order id', 'First name', 'Last name' , 'Country', 'Qty' , 'Total' , 'Order date' , 'Tags']" :rows="rows" />
+<div>
+    <Table :headers="['Order id', 'First name', 'Last name' , 'Country', 'Qty' , 'Total' , 'Order date' , 'Tags']" :rows="filteredRows" />
+</div>
 </template>
 
 <script>
@@ -16,7 +18,18 @@ export default {
       rows : []
     }
   },
+  computed: {
+    searchId() {
+      return this.$store.getters.getSearchId;
+    },
+    filteredRows() {
+      if (!this.searchId) return this.rows;
 
+      return this.rows.filter(item =>
+        item[0].toString().includes(this.searchId)
+      );
+    }
+  },
   methods: {
     getData(){
       getRequest('https://dummyjson.com/c/1924-5416-40b1-a846')

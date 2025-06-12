@@ -46,7 +46,6 @@ export default {
   name: 'TextInput',
   props: {
     value: {
-      // Vue 2: مدل داده‌ای با prop 'value'
       type: [String, Number],
       default: ''
     },

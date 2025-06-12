@@ -17,10 +17,6 @@ export default {
         ].includes(value);
       },
     },
-    text: {
-      type: [String, Number],
-      required: true
-    },
     size: {
       type: String,
       default: 'md',

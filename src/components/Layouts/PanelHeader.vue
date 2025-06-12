@@ -6,7 +6,7 @@
     </div>
     <!-- action bar -->
     <div class="flex items-center gap-4">
-        <TextInput placeholder="Order ID" size="sm">
+        <TextInput v-model="searchId" placeholder="Order ID" size="sm">
             <template #icon>
                 <i class="fas fa-search"></i>
             </template>
@@ -27,6 +27,16 @@ export default {
     components:{
         TextInput,
     },
+    computed: {
+        searchId: {
+                get() {
+                    return this.$store.getters.getSearchId;
+                },
+                set(value) {
+                    this.$store.dispatch('updateSearchId', value);
+                }
+            }
+    },
     data() {
         return {
         
@@ -34,7 +44,9 @@ export default {
     },
 
     methods: {
-
+        onInputChange(event) {
+        this.$store.dispatch('updateSearchId', event.target.value);
+        }
     }
 }
 </script>
