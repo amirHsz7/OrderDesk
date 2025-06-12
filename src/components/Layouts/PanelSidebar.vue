@@ -1,19 +1,19 @@
 <template>
   <div :class="classes">
     <!-- flex flex-col gap-2 -->
-    <div v-if="close" @click="toggleSidebar" class="toggle-btn">
-        <i :class=" close ? 'rotate-180' : ''" class="fas fa-angle-left transition"></i>
+    <div  @click="toggleSidebar" :class="{closed : close}" class="toggle-btn">
+        <i :class="close ? 'rotate-180' : ''" class="fas fa-angle-left transition duration-500"></i>
     </div>
     <SidebarLink :minimal="close" text="Dashboard">
         <template #before>
             <i class="fas fa-home"></i>
         </template>
 
-        <template #after>
+        <!-- <template #after>
             <div @click="toggleSidebar" class="toggle-btn">
                 <i :class=" close ? 'rotate-180' : ''" class="fas fa-angle-left transition"></i>
             </div>
-        </template>
+        </template> -->
     </SidebarLink>
 
     <SidebarLink :minimal="close" text="Folders" selected nested>
@@ -109,7 +109,7 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar{
-    @apply flex flex-col gap-2 w-[190px] transition-all;
+    @apply relative flex flex-col gap-2 w-[190px] transition-all duration-200 ;
 
     &.closed{
         @apply w-6 
@@ -117,8 +117,15 @@ export default {
 }
 
 .toggle-btn{
-    @apply px-2 rounded bg-white  transition cursor-pointer shadow;
+    @apply px-2 max-w-[24px] rounded bg-white transition cursor-pointer duration-200 shadow ;
 
+    &:not(.closed){
+        @apply absolute top-0 right-4;
+    }
+
+    &.closed{
+        @apply static
+    }
     &:hover{
         @apply bg-gray-100;
     }

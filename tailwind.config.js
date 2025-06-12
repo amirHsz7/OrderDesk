@@ -43,6 +43,8 @@ module.exports = {
 			'stroke': '#DFE4EA',
 			'main-blue': '#1b4473',
 			'secondary-blue': '#3372b9',
+			'failed': '#de7070',
+			'waiting': '#ae96b0',
 			//dark
 			'dark': '#050505',
 			'dark-200': '#707070',

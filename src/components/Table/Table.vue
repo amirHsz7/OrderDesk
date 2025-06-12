@@ -1,16 +1,16 @@
 <template>
-  <table border="1" cellspacing="0" cellpadding="8">
+  <table class="w-full" border="1" cellspacing="0" cellpadding="8">
     <thead>
-      <tr>
+      <tr class="p-1">
         <th
             v-for="(header, index) in headers"
             :key="index"
             @click="sortBy(index)"
-            class="cursor-pointer"
+            class="cursor-pointer hover:bg-stroke rounded transition select-none border-b border-gray-300 text-start"
         >
           {{ header }}
           <span v-if="sortColumn === index">
-            {{ sortDirection === 'asc' ? '▲' : '▼' }}
+            <i :class="sortDirection === 'desc' ? 'rotate-180' : ''" class="fas fa-arrow-up transition text-xs"></i>
           </span>
         </th>
       </tr>
@@ -75,3 +75,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+th{
+    @apply text-primary-text text-lg-r
+}
+</style>
