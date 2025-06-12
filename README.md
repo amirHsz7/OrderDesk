@@ -1,3 +1,5 @@
+پروژه OrderDesk
+
 یک داشبورد مدیریت سفارشات ساخته شده با Vue 2، که امکان مرتب‌سازی و جابجایی ستون‌ها به صورت درگ و دراپ را فراهم می‌کند. پروژه کاملاً واکنش‌گرا بوده و از TailwindCSS و FontAwesome برای استایل و آیکون‌ها استفاده می‌کند.
 
 امکانات
@@ -25,7 +27,7 @@ Node.js نسخه ۱۲ به بالا
 npm یا yarn
 
 مراحل نصب و اجرا
-
+```bash
 git clone https://github.com/amirHsz7/OrderDesk.git
 
 cd order-desk
@@ -33,6 +35,7 @@ cd order-desk
 npm install
 
 npm run serve
+```
 
 
 ساختار پروژه
