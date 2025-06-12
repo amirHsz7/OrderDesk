@@ -1,24 +1,47 @@
-# order-desk
+Order Desk
+یک داشبورد مدیریت سفارشات ساخته شده با Vue 2، که امکان مرتب‌سازی و جابجایی ستون‌ها به صورت درگ و دراپ را فراهم می‌کند. پروژه کاملاً واکنش‌گرا بوده و از TailwindCSS و FontAwesome برای استایل و آیکون‌ها استفاده می‌کند.
 
-## Project setup
-```
+امکانات
+داشبورد مدیریت سفارشات
+
+مرتب‌سازی جدول بر اساس ستون‌ها
+
+جابجایی ستون‌ها با Drag & Drop (فقط ستون‌های میانی)
+
+طراحی واکنش‌گرا برای نمایش مناسب در اندازه‌های مختلف صفحه
+
+استفاده از Vue Router و Vuex برای مدیریت مسیرها و وضعیت اپلیکیشن
+
+اتصال به API جعلی برای دریافت داده‌ها
+
+استفاده از TailwindCSS و FontAwesome برای استایل و آیکون‌ها
+
+نصب و راه‌اندازی
+پیش‌نیازها
+Node.js نسخه ۱۲ به بالا
+
+npm یا yarn
+
+مراحل نصب و اجرا
+bash
+Copy
+Edit
+git clone https://github.com/amirHsz7/OrderDesk.git
+cd order-desk
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
-```
+ساختار پروژه
+src/components: کامپوننت‌های قابل استفاده مجدد مثل جدول، ردیف جدول، دکمه و ...
 
-### Compiles and minifies for production
-```
-npm run build
-```
+src/pages: صفحات اصلی مانند داشبورد
 
-### Lints and fixes files
-```
-npm run lint
-```
+src/router: تنظیمات مسیرهای برنامه
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+src/store: مدیریت وضعیت با Vuex
+
+src/assets: فایل‌های استاتیک و استایل‌ها
+
+استفاده
+بعد از اجرای پروژه با دستور npm run serve، به صورت خودکار به صفحه داشبورد /dashboard هدایت می‌شوید.
+در صفحه داشبورد می‌توانید از قابلیت‌های فیلتر، مرتب‌سازی و جابجایی ستون‌ها بهره‌مند شوید.
+
