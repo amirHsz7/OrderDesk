@@ -5,24 +5,36 @@
         OrderDesk
     </div>
     <!-- action bar -->
-    <div>
-        <i class="fas fa-user"></i>
+    <div class="flex items-center gap-4">
+        <TextInput placeholder="Order ID" size="sm">
+            <template #icon>
+                <i class="fas fa-search"></i>
+            </template>
+        </TextInput>
+        <div class="flex items-center gap-2">
+            <i class="fas fa-user"></i>
+            User name
+        </div>
     </div>
   </div>
 </template>
 
 <script>
+import TextInput from '../inputs/TextInput.vue'
+
 export default {
-  name: 'PanelHeader',
+    name: 'PanelHeader',
+    components:{
+        TextInput,
+    },
+    data() {
+        return {
+        
+        }
+    },
 
-  data() {
-    return {
-      
+    methods: {
+
     }
-  },
-
-  methods: {
-
-  }
 }
 </script>

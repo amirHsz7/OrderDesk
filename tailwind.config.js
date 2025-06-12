@@ -42,6 +42,7 @@ module.exports = {
 			'secondary-text': '#8899A8',
 			'stroke': '#DFE4EA',
 			'main-blue': '#1b4473',
+			'secondary-blue': '#3372b9',
 			//dark
 			'dark': '#050505',
 			'dark-200': '#707070',
