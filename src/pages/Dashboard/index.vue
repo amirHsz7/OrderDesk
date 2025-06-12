@@ -1,5 +1,14 @@
 <template>
 <div>
+    <!-- filter btn -->
+    <Button color="gray">
+      filter
+      <template #before>
+        <i class="fas fa-sliders"></i>
+      </template>
+    </Button>
+
+    <!-- table -->
     <Table :headers="['Order id', 'First name', 'Last name' , 'Country', 'Qty' , 'Total' , 'Order date' , 'Tags']" :rows="filteredRows" />
 </div>
 </template>
@@ -7,11 +16,13 @@
 <script>
 import {getRequest , parseApiResponse} from "@/composables/ApiRequests"
 import Table from "@/components/Table/Table.vue"
+import Button from '@/components/Buttons/Button.vue'
 export default {
   name: 'DashboardPage',
   layouts: 'DefaultLayout',
   components:{
-    Table
+    Table,
+    Button
   },
   data() {
     return {
@@ -39,11 +50,10 @@ export default {
             this.rows.push(Object.values(item))
             
           });
-          console.log('doneeeeeeee',data);
 
         })
         .catch((error) => {
-            console.log('errrrrrrrrrrr',error);
+            console.log(error);
         })
       }
   },
