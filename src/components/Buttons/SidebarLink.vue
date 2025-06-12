@@ -1,19 +1,24 @@
 <template>
-  <div :class="classes">
-    <!-- icon -->
-    <div class="before-slot">
-        <slot name="before"/>
-    </div>
+  <div>
+    <router-link :to="url" :class="classes">
+      <!-- icon -->
+      <div class="before-slot">
+          <slot name="before"/>
+      </div>
 
-    <router-link class="min-w-[128px] main" :to="url">
-        {{ text }}
+      <div v-if="!minimal" class="min-w-[128px] main">
+          {{ text }}
+      </div>
+
+      <!-- after -->
+      <div v-if="!minimal" class="after-slot">
+          <slot name="after"/>
+      </div>
+
     </router-link>
-
-    <!-- after -->
-    <div class="after-slot">
-        <slot name="after"/>
+    <div class="ml-4 mt-2" v-if="nested && !minimal">
+      <slot name="nested"/>
     </div>
-
   </div>
 </template>
 
@@ -30,6 +35,14 @@ export default {
       default: '/'
     },
     selected: {
+      type: Boolean,
+      default: false
+    },
+    minimal: {
+      type: Boolean,
+      default: false
+    },
+    nested: {
       type: Boolean,
       default: false
     },

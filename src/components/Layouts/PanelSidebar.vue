@@ -1,66 +1,73 @@
 <template>
-  <div class="flex flex-col gap-2">
-    <SidebarLink text="Dashboard">
+  <div :class="classes">
+    <!-- flex flex-col gap-2 -->
+    <div v-if="close" @click="toggleSidebar" class="toggle-btn">
+        <i :class=" close ? 'rotate-180' : ''" class="fas fa-angle-left transition"></i>
+    </div>
+    <SidebarLink :minimal="close" text="Dashboard">
         <template #before>
             <i class="fas fa-home"></i>
         </template>
 
         <template #after>
-            <div class="px-2 py-1 rounded bg-white hover:bg-gray-100 transition cursor-pointer">
-                <i class="fas fa-angle-left"></i>
+            <div @click="toggleSidebar" class="toggle-btn">
+                <i :class=" close ? 'rotate-180' : ''" class="fas fa-angle-left transition"></i>
             </div>
         </template>
     </SidebarLink>
 
-    <SidebarLink text="Folders" selected>
+    <SidebarLink :minimal="close" text="Folders" selected nested>
         <template #before>
             <i class="fas fa-folder"></i>
         </template>
-    </SidebarLink>
-
-    <SidebarLink text="All Orders" selected>
-        <template #before>
-            <div class="w-4 flex justify-end">
-                <div class="w-[2px] h-[24px] bg-secondary-blue"></div>
-            </div>
+        <template #nested>
+            <SidebarLink :minimal="close" text="All Orders" selected>
+                <template #before>
+                    <div class=" flex justify-end">
+                        <div class="w-[2px] h-[24px] bg-secondary-blue"></div>
+                    </div>
+                </template>
+            </SidebarLink>
         </template>
     </SidebarLink>
 
-    <SidebarLink text="products">
+    <SidebarLink :minimal="close" text="products">
         <template #before>
             <i class="fas fa-shopping-bag"></i>
         </template>
     </SidebarLink>
 
-    <SidebarLink text="Work Flow" >
+    <SidebarLink :minimal="close" text="Work Flow" >
         <template #before>
             <i class="fas fa-chart-line"></i>
         </template>
     </SidebarLink>
 
-    <SidebarLink text="Import/Export">
+    <SidebarLink :minimal="close" text="Import/Export">
         <template #before>
             <i class="fas fa-right-from-bracket"></i>
         </template>
     </SidebarLink>
 
-    <SidebarLink text="Integration">
+    <SidebarLink :minimal="close" text="Integration">
         <template #before>
             <i class="fas fa-hands-helping"></i>
         </template>
     </SidebarLink>
 
-    <SidebarLink text="Templates">
+    <SidebarLink :minimal="close" text="Templates">
         <template #before>
             <i class="fas fa-clipboard"></i>
         </template>
     </SidebarLink>
 
-    <SidebarLink text="Setting">
+    <SidebarLink :minimal="close" text="Setting">
         <template #before>
             <i class="fas fa-cog"></i>
         </template>
     </SidebarLink>
+
+    {{close}}
   </div>
 </template>
 
@@ -74,12 +81,47 @@ export default {
     },
     data() {
         return {
-        
+            close : false
         }
     },
 
-    methods: {
+    computed:{
+        classes() {
+            let classes = ['sidebar']
+            
+            if (this.close) classes.push('closed')
+            else {
+                    classes.includes('closed') ? classes.concat() : null
+                }
+            console.log(classes);
+            return classes
+        },
+    },
 
+    methods: {
+        toggleSidebar () {
+            this.close =! this.close
+            
+        }
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.sidebar{
+    @apply flex flex-col gap-2 w-[190px] transition-all;
+
+    &.closed{
+        @apply w-6 
+    }
+}
+
+.toggle-btn{
+    @apply px-2 rounded bg-white  transition cursor-pointer shadow;
+
+    &:hover{
+        @apply bg-gray-100;
+    }
+    
+}
+</style>
