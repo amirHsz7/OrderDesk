@@ -26,8 +26,11 @@ npm یا yarn
 مراحل نصب و اجرا
 
 git clone https://github.com/amirHsz7/OrderDesk.git
+
 cd order-desk
+
 npm install
+
 npm run serve
 ساختار پروژه
 
